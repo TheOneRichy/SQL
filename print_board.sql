@@ -1,9 +1,9 @@
--- DROP FUNCTION print_board(integer[]);
 CREATE OR REPLACE FUNCTION print_board(board INTEGER[][]) RETURNS SETOF TEXT AS $$
 DECLARE
     row_text TEXT;
     i INTEGER;
     j INTEGER;
+    s INTEGER := 1;
 BEGIN
     -- Print the top border
     RETURN NEXT '-------------------------';
