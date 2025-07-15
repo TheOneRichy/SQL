@@ -15,28 +15,16 @@ DECLARE initial_sudoku_board INTEGER[][] := ARRAY[
     is_it_valid BOOLEAN;
 
 BEGIN 
-    -- SELECT * INTO empty_cell FROM find_empty(initial_sudoku_board);
-    -- -- Access the fields using the column names returned by find_empty function
-    -- RAISE NOTICE 'Coord: %', empty_cell;
+    SELECT * INTO empty_cell FROM find_empty(initial_sudoku_board);
+    -- Access the fields using the column names returned by find_empty function
+    RAISE NOTICE 'Next Empty Coord: %', empty_cell;
 
-    SELECT * INTO is_it_valid FROM is_valid(initial_sudoku_board, 2, (1,4));
+    SELECT * INTO is_it_valid FROM is_valid(initial_sudoku_board, 2, (6,3));
     -- Access the fields using the column names returned by find_empty function
     RAISE NOTICE '%', is_it_valid;
-
 
     FOR sudoku_row IN SELECT * FROM print_board(initial_sudoku_board) LOOP
         RAISE NOTICE '%', sudoku_row;
     END LOOP;
 END;
 $$ LANGUAGE plpgsql;
-
--- DO $$
--- DECLARE 
---     x INTEGER;
---     x_x INTEGER;
-
--- BEGIN
---     x := FLOOR(1/3);
---     RAISE NOTICE '%', x;
--- END;
--- $$ LANGUAGE plpgsql;
