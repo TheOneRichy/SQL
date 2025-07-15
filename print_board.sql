@@ -1,6 +1,3 @@
-
-
-
 -- DROP FUNCTION print_board(integer[]);
 CREATE OR REPLACE FUNCTION print_board(board INTEGER[][]) RETURNS SETOF TEXT AS $$
 DECLARE
