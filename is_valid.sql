@@ -3,10 +3,9 @@ DECLARE
     is_valid BOOLEAN;
     i INTEGER;
     j INTEGER;
-    box_x INTEGER;
-    box_y INTEGER;
-    box_range_x INTEGER;
-    box_range_y INTEGER;
+    start_col INTEGER;
+    start_row INTEGER;
+
 BEGIN
     --Check the row
     FOR i IN 1..9 LOOP
@@ -23,11 +22,12 @@ BEGIN
     END LOOP;
 
     --Check 3x3 Box
-    box_x := FLOOR((pos.f2-1)/3);
-    box_y := FLOOR((pos.f1-1)/3);
+    start_col := FLOOR((pos.f2 - 1) / 3) * 3 + 1;
+    start_row := FLOOR((pos.f1 - 1) / 3) * 3 + 1;
     
-    FOR i IN ((box_y*3)+1)..((box_y*3) + 3) LOOP
-        FOR j IN ((box_x*3)+1)..((box_x*3) + 3) LOOP
+
+    FOR i IN ((start_row*3))..((start_row*3) + 3) LOOP
+        FOR j IN ((start_col*3))..((start_col*3) + 3) LOOP
         RAISE NOTICE 'Checking box position (%,%): value=%', i, j, board[i][j];
             IF board[i][j] = num AND (i,j) <> pos THEN
                 RETURN FALSE;

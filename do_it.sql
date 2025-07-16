@@ -19,7 +19,7 @@ BEGIN
     -- Access the fields using the column names returned by find_empty function
     RAISE NOTICE 'Next Empty Coord: %', empty_cell;
 
-    SELECT * INTO is_it_valid FROM is_valid(initial_sudoku_board, 2, (6,3));
+    SELECT * INTO is_it_valid FROM is_valid(initial_sudoku_board, 1, (1,3));
     -- Access the fields using the column names returned by find_empty function
     RAISE NOTICE '%', is_it_valid;
 
